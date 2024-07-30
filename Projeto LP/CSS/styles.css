@@ -101,21 +101,18 @@ nav {
 }
 
 .services-container ul {
-    float: left;
+    display: flex;
     width: 90%;
-    margin: 0 70px auto;
+    margin: 0 auto;
 }
 
 .services-container li {
-    float: left;
-    margin-left: 20px;
-    width: 450px;
+    flex: 1 1 200px;
     list-style: none;
     text-align: center;
     padding: 20px;
     border: 1px solid #ccc;
     box-shadow: 0 4px 20px 0 rgba(0,0,0,0.3);
-    margin-bottom: 5rem;
 }
 
 .fas {
@@ -146,7 +143,6 @@ nav {
 /* prices and plans */
 
 .pricing-container {
-    clear: both;
     padding-bottom: 5rem;
     text-align: center;
 }
@@ -161,25 +157,23 @@ nav {
 }
 
 .plans-container {
-    clear: both;
+    display: flex;
     justify-content: space-between;
     width: 90%;
     margin: 50px auto;
 }
 
 .plan {
-    float: left;
+    flex: 1;
     max-width: 275px;
     margin: 0 20px;
 }
 
 .plan ul {
-    margin: 0 70px auto;
     padding: 0;
 }
 
 .plan li {
-    width: 250px;
     list-style: none;
     height: 50px;
     line-height: 50px;
@@ -189,7 +183,6 @@ nav {
 }
 
 .plan .price {
-    left: 60px;
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -236,19 +229,19 @@ nav {
 /* search domain */
 
 .searchdomain-container {
-    clear: both;
+    background-color: #34454e; 
     text-align: center;
     padding: 5rem 0;
 }
 
 .searchdomain-container h2 {
-    color: #333;
+    color: #fff;
     font-size: 42px;
     margin-bottom: 15px;
 }
 
 .searchdomain-container p {
-    color: #333;
+    color: #d5d5d5;
     font-size: 24px;
     margin-bottom: 25px;
 }
@@ -258,7 +251,6 @@ nav {
     border: none;
     border-radius: 5px;
     margin: 0 auto;
-    box-shadow: 1px 2px 2px 2px #333;
 }
 
 .searchdomain-container input[type="text"] {
@@ -268,28 +260,30 @@ nav {
     margin-bottom: 25px;
 }
 
-.searchdomain-container input[type="submit"] {
+.searchdomain-container button[type="submit"] {
     background-color: #2cc76a;
     padding: 15px 30px;
     color: #fff;
     font-size: 24px;
     cursor: pointer;
     opacity: .8;
+    border-radius: 5px;
 }
 
-.searchdomain-container input[type="submit"]:hover {
+.searchdomain-container button[type="submit"]:hover {
     opacity: 1;
 }
 
 /* contact form */
 
 .contact-container {
-    height: 100vh;
     text-align: center;
     padding: 5rem 0 2rem 0;
+    height: 800px;
 }
 
 .contact-container h2 {
+    margin-top: 100px;
     font-size: 36px;
     margin-bottom: 15px;
 }
@@ -324,6 +318,129 @@ nav {
     cursor: pointer;
 }
 
+/* login form */
+
+
+#login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.card {
+    
+    padding: 40px;
+    border-radius: 2px;
+    width:450px;
+}
+
+.card-header h2{
+    padding-bottom: 50px;
+    color: #333;
+}
+
+
+.card-content label {
+    color: #333;
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+.card-content-area {
+    display: flex;
+    flex-direction: column;
+    padding:10px 0;
+}
+
+.card-content-area input {
+    margin-top: 10px;
+    padding:10px 5px;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid #333;
+    outline: none;
+    color: #333;
+}
+
+.card-footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-footer button[type="submit"] {
+    width: 100%;
+    height: 40px;
+    background-color: #2cc76a;
+    border-radius: 5px;
+    border:none;
+    color:#fff;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+/* msg */
+
+.msg-container {
+    height: 80vh;
+    margin: 20px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+.msg-container h3 {
+    padding: 2rem;
+    text-align: center;
+}
+
+#msg-list {
+    display: flex;                      
+    flex-wrap: wrap;               
+    justify-content: space-around;              
+}
+
+.msg {
+    padding: 30px;
+    border-radius: 5px;
+    width:350px;
+    border: solid 1px #ccc;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,0.3);
+    margin-bottom: 20px;
+}
+
+.msg p {
+    margin-bottom: 8px;
+}
+
+.msg textarea {
+    margin-top: 5px;
+    resize: none;
+    height: 100px;
+    width: 280px;
+    padding: 10px;
+}
+
+button:hover {
+    background-color: #bd0f0f;
+    color: #fff;
+}
+
+button:hover > i {
+    color: #fff;
+}
+
+button i {
+    color: #bd0f0f;
+    font-weight: bold;
+    border: 5px;
+    padding: .3rem .6rem;
+}
+
+.remove-msg {
+    margin-top: 5px;
+    cursor: pointer;
+}
+
 /* footer */
 
 footer {
@@ -338,4 +455,112 @@ footer p {
     font-weight: bold;
     color: #fff;
     text-shadow: #000 3px 2px 3px;
+}
+
+/* responsividade */
+
+/* small laptops a partir de 1100px */
+
+@media(max-width: 1100px) {
+    .plans-container {
+        width: 95%;
+    }
+
+    .plan {
+        margin: 0 5px;
+    }
+}
+
+/* tablet 900px*/
+
+@media(max-width: 900px) {
+    .main-banner p {
+        padding: 0 6rem;
+    }
+
+    .plan .plan-name {
+        font-size: 18px;
+    }
+
+    .searchdomain-container {
+        padding: 2rem 4rem;
+    }
+}
+
+/* celular */
+
+@media(max-width: 550px) {
+    html,body {
+        overflow-x: hidden;
+    }
+
+    .navbar-items li {
+        font-size: 12px;
+        margin-left: 10px;
+    }
+
+    .main-banner p {
+        margin-top: 10px;
+        padding: 0 2rem;
+        font-size: 25px;
+    }
+
+    .services-container ul {
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    .services-container li {
+       margin: 5px;
+    }
+    
+    .pricing-container {
+        padding-bottom: 30px;
+    }
+
+    .plans-container {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 2rem;
+    } 
+
+    .plan {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        margin-bottom: 30px;
+    }
+
+    .searchdomain-container h2 {
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    .searchdomain-container p {
+        font-size: 18px;
+        margin-bottom: 25px;
+    }
+
+    .searchdomain-container input[type="text"] {
+        width: 100%;
+        padding: 20px;
+        font-size: 18px;
+        margin-bottom: 25px;
+    }
+
+    .searchdomain-container input[type="submit"] {
+        width: 60%;
+        padding: 15px 30px;
+        font-size: 15px;
+    }
+
+    .contact-container {
+        padding: 3rem 2rem;
+    }
+
+    .contact-container input,
+    .contact-container textarea {
+        width: 100%;
+        margin: 10px 0;
+    }
 }

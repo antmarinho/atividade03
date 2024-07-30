@@ -1,70 +1,82 @@
-class Contato {
+const contatoForm = document.getElementById('contact-form')
 
-    constructor(name, email, message){
+const getTodasMsg = () => {
 
-        this.name = name
-        this.email = email
-        this.message = message
+    const msgs = JSON.parse(localStorage.getItem('msgs')) || [];
+    
+    return msgs
+}
 
-    }
+const saveMsg = (msg) => {
 
-    validateData() {
-        
-        for (let i in this) {
+    const msgs = getTodasMsg()
 
-            if(this[i] === undefined || this[i] === "")
-                return false
-            
+    msgs.push(msg)
+
+    localStorage.setItem('msgs',JSON.stringify(msgs))
+
+}
+
+contatoForm.addEventListener("submit", (e) => {
+
+    const nome = document.getElementById('name').value
+    const email = document.getElementById('email').value
+    const msg = document.getElementById('message').value
+
+    if(validateEmail(email)) {
+
+        const contato = {
+            nome: nome,
+            email: email,
+            msg: msg
         }
 
-        return true
-    }
-
-}
-
-class Database {
-
-    constructor() {
-
-        const id = localStorage.getItem('id')
-
-        if(id === null)
-            localStorage.setItem('id', 0)
-        
-    }
-
-    createContato(contato) {
-
-        const id = getNextId()
-        localStorage.setItem(id, JSON.stringify(contato))
-        localStorage.setItem('id', id)
-
-    }
-
-}
-
-const database = new Database()
-
-function getNextId() {
-
-    const nextId = localStorage.getItem('id')
-    return parseInt(nextId) + 1;
-
-}
-
-function registerContato() {
-
-    const name = document.getElementById('name').value
-    const email = document.getElementById('email').value
-    const message = document.getElementById('message').value
-
-    const contato = new Contato(name, email, message)
-
-    if(contato.validateData()) {
-
-        database.createContato(contato)
-        alert("Mensagem enviada com sucesso")
-
-    }
+        alert('Mensagem enviada')
     
+        saveMsg(contato)
+
+
+    } else {
+
+        alert('Email invalido')
+    }
+
+})
+
+
+//validacoes
+
+function validateEmail(email) {
+
+  let re = /\S+@\S+\.\S+/;
+
+  return re.test(email);
+
+}
+
+
+// fetch
+
+async function verificar() {
+
+    const dominio = document.getElementById('domain').value
+
+    const url = "http://127.0.0.1:5500/JS/listaDom.json";
+
+    try {
+
+            const response = await fetch(url);
+            if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+
+        const json = await response.json();
+
+        json.dominios.includes(dominio) ? alert('O dominio ja foi resgistrado escolha outro') : alert('O dominio estar disponivel para uso')
+
+
+    } catch (error) {
+        
+        console.error(error.message);
+    }
 }
